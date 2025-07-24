@@ -2,7 +2,9 @@ def main():
     try:
         num_input = input("숫자(들)를(을) 입력하시오: ") #숫자입력부분
         list_nums = num_input.split() #숫자입력을 해주며 이를 리스트형태로 꿔줌
-        numbers = [float(t) for t in list_nums] #for 이용으로 문자형인 리스트 숫자들을 하나씩 실수형으로 바꿈 
+        numbers = [float(t) for t in list_nums] #for 이용으로 문자형인 리스트 숫자들을 하나씩 실수형으로 바꿈
+        if not list_nums:
+            raise ValueError
     except ValueError:
         print("Invalid input.")
         return
@@ -11,9 +13,9 @@ def main():
     maximum = numbers[0]
 
     for num in numbers[1:]:  #리스트 1번부터 하나씩 리스트에서 꺼내고 반복
-        if num < minimum:
+        if num <= minimum:
             minimum = num
-        if num > maximum:
+        if num >= maximum:
             maximum = num
 
     print("Min:", minimum)
